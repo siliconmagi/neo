@@ -18,4 +18,9 @@ df['trim'] = df['B'].astype(str).str[1:]
 # concat columns
 df['cat'] = df['A'].map(str) + df['B'].map(str)
 
+# replace
+rp = {10: "X", 12: "Y"}
+rd = df.replace({"B": rp})
+
 print(df)
+print(rd)
