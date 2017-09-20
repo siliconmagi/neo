@@ -24,3 +24,7 @@ rd = df.replace({"B": rp})
 
 print(df)
 print(rd)
+
+# replace df inplace
+df.replace({"C": rp}, inplace=True)
+print(df)
