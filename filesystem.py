@@ -2,7 +2,7 @@
 import os
 
 # change directory
-os.chdir('/home/zeal/p/python')
+os.chdir('/home/xeno/p/neo')
 
 # verify pwd
 print(os.getcwd())
