@@ -4,8 +4,8 @@ time = strftime("%Y-%m-%d %H:%M:%S", localtime())
 cmd = 'git commit -m "' + time + '"'
 print(os.getcwd())
 
-# goto vim folder
-os.chdir('/home/ice/p/vim')
+# goto python folder
+os.chdir('/home/ice/p/neo')
 print(os.getcwd())
 
 # push changes to github
