@@ -3,7 +3,7 @@ import os
 
 # change directory
 os.chdir('/home/xeno/p/neo')
-
+ee
 # verify pwd
 print(os.getcwd())
 
