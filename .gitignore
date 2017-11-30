@@ -2,11 +2,8 @@
 *
 
 # But not these files...
-!*.py
+!/*.py
 !*.md
 !.gitignore
 !Pipfile
-# ...even if they are in subdirectories
-!*/
-
-
+config.py
