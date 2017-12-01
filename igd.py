@@ -11,7 +11,7 @@ os.system('rsync -avz ~/.vimrc ~/p/dotfiles')
 os.system('rsync -avz ~/.config/alacritty/alacritty.yml ~/p/dotfiles')
 os.system('rsync -avz ~/.config/nvim/init.vim ~/p/dotfiles')
 os.system('rsync -avz ~/.profile ~/p/dotfiles')
-os.chdir('/home/ice/p/dotfiles')
+os.chdir('/home/zeal/p/dotfiles')
 print(os.getcwd())
 
 # push changes to github

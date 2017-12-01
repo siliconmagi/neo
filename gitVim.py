@@ -5,7 +5,7 @@ cmd = 'git commit -m "' + time + '"'
 print(os.getcwd())
 
 # goto vim folder
-os.chdir('/home/ice/p/vim')
+os.chdir('/home/neo/p/vim')
 print(os.getcwd())
 
 # push changes to github
