@@ -1,20 +1,24 @@
 import smtplib
 
-#  test = './test.txt'
-msg = 'hi'
-me = 'siliconmagi@yandex.com'
-you = 'siliconmagi@yandex.com'
+from email.mime.text import MIMEText
+from config import me, pwd, to1, to2, cc1, cc2, out
 
-message = """From: From Person <from@fromdomain.com>
-To: To Person <to@todomain.com>
-Subject: SMTP e-mail test
+txt = './mail.txt'
 
-This is a test e-mail message.
-"""
+with open(txt, 'r') as fp:
+    msg = MIMEText(fp.read())
 
-try:
-    smtpObj = smtplib.SMTP('localhost')
-    smtpObj.sendmail(me, you, msg)
-    print("Successfully sent email")
-except SMTPException:
-    print("Error: unable to send email")
+server = smtplib.SMTP_SSL(out)
+server.set_debuglevel(1)
+server.login(me, pwd)
+
+sender = me
+recipient = [to1, to2]
+cc = [cc1, cc2]
+msg['Subject'] = 'Hourly Report 11/30/2017 2:00 PM'
+msg['From'] = me
+msg['To'] = ", ".join(recipient)
+msg['CC'] = ", ".join(cc)
+server.sendmail(me, me, msg.as_string())
+server.quit()
+print('done')
