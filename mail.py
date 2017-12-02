@@ -15,7 +15,7 @@ server.login(me, pwd)
 sender = me
 recipient = [to1, to2]
 cc = [cc1, cc2]
-msg['Subject'] = 'Hourly Report 12/2/2017 11:00 AM'
+msg['Subject'] = 'Hourly Report 12/2/2017 1:00 PM'
 msg['From'] = me
 msg['To'] = ", ".join(recipient)
 msg['CC'] = ", ".join(cc)
