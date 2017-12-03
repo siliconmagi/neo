@@ -7,4 +7,3 @@
 !.gitignore
 !Pipfile
 config.py
-mail.py
