@@ -1,27 +1,20 @@
-from config import amo05
-import re
 from pexpect import pxssh
-#  import getpass
+from config import amo09
+
+user = amo09.user
+host = amo09.ip
 
 try:
     s = pxssh.pxssh()
-    rootprompt = re.compile('.*[$#]')
-    hostname = amo05.ip
-    username = amo05.user
-    password = amo05.pwd
-    s.login(hostname, username, password)
-    s.sendline("sudo su -")
+    s.login(amo09.ip, amo09.user, amo09.pwd)
+    s.sendline('date')       # run a command
+    s.prompt()                # match the prompt
+    print(s.before)           # print everything before the prompt.
+    s.sendline('sudo whoami')  # run a command
+    s.expect('(?i)password.*:')  # match password prompt for sudo
+    s.sendline(amo09.pwd)
     s.prompt()
     print(s.before)
-    i = s.expect([rootprompt, 'assword.*: '])
-    if i == 0:
-        print('0')
-        pass
-    elif i == 1:
-        print('1')
-    else:
-        print('none')
-
+    s.logout()
 except pxssh.ExceptionPxssh as e:
-    print("pxssh failed on login.")
     print(e)
