@@ -1,3 +1,6 @@
+# todo
+#  split number and name
+
 from pexpect import pxssh
 from config import amo09, amo10, amo05, amo07
 import re
@@ -33,7 +36,7 @@ def ssh(x):
             date()
             s.sendline(cmd2)         # run a command
         else:
-            print('Invalid Server number')
+            return print('Invalid Server number')
         #  s.expect('(?i)password.*:')  # match password prompt for sudo
         #  s.sendline(amo09.pwd)
         s.prompt()
@@ -41,7 +44,12 @@ def ssh(x):
         print(log)
         top = re.findall("\d.*?>", log)
         #  top = re.search('<(.*?)>', log).group(1)
-        print(top)
+        try:
+            num = [i.split(' ', 1)[0] for i in top]
+            #  name = [i.split(' ', 1)[0] for i in top]
+            print(num)
+        except ValueError:
+            print('Unable to Parse')
         s.logout()
     except pxssh.ExceptionPxssh as e:
         print(e)
