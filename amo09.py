@@ -1,7 +1,8 @@
 # todo
-#  split number and name
+# return whois from dict
 
 from pexpect import pxssh
+#  from ipwhois import IPWhois
 from config import amo09, amo10, amo05, amo07
 import re
 
@@ -45,9 +46,19 @@ def ssh(x):
         top = re.findall("\d.*?>", log)
         #  top = re.search('<(.*?)>', log).group(1)
         try:
-            num = [i.split(' ', 1)[0] for i in top]
-            #  name = [i.split(' ', 1)[0] for i in top]
-            print(num)
+            # parse prompt
+            v = [i.split(' ', 1)[0] for i in top]
+            k = [i.split(' ', 1)[1].replace(
+                '<', '').replace('>', '') for i in top]
+            d = dict(zip(k, v))
+            d = {k: int(v) for k, v in d.items()}
+            d = {k: v for k, v in d.items() if v >= 20}
+            print(v)
+            print(k)
+            print(d)
+            s.sendline('mailq | grep tsunoda | head -1')
+            s.prompt()
+            print(s.before.decode('unicode_escape'))
         except ValueError:
             print('Unable to Parse')
         s.logout()

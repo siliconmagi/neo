@@ -7,3 +7,4 @@
 !.gitignore
 !Pipfile
 config.py
+env.py
